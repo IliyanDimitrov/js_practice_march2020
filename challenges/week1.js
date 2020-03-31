@@ -17,13 +17,15 @@ function capitalize(word) {
 function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
+
   return `${firstName.charAt(0)}.${lastName.charAt(0)}`;
 }
 
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  // Add your code here!
+  return vatRate <= 0 ? originalPrice : (originalPrice * vatRate) / 100 + originalPrice; 
+
 }
 
 function getSalePrice(originalPrice, reduction) {
