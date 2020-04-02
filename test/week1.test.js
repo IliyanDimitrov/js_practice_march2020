@@ -47,7 +47,7 @@ describe("addVAT", () => {
   });
 });
 
-describe.only("getSalePrice", () => {
+describe("getSalePrice", () => {
   test("reduces a price of 100 by 50%", () => {
     expect(getSalePrice(100, 50)).toBe(50);
   });
@@ -65,7 +65,7 @@ describe.only("getSalePrice", () => {
   });
 });
 
-describe("getMiddleCharacter", () => {
+describe.only("getMiddleCharacter", () => {
   test("returns the middle character from a string of odd length", () => {
     expect(getMiddleCharacter("bears!!!!")).toBe("s");
   });

@@ -25,10 +25,17 @@ function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
 
+  //Declared a variable containing the Vat included price
+
   let includeVat = (originalPrice * vatRate) / 100 + originalPrice;
 
-  //Built the solution with ternary operator.
+  /*Built the solution with ternary operator.
 
+    Line #1: Checking if there is vat rate if none applied simply return the orginal price
+    Line #2: Checking if the price with the vat included is whole number if yes, simply returning it
+    Line #3: If decimal return to second digit after floating point
+
+  */
   return vatRate <= 0 ? originalPrice : 
   Number.isInteger(includeVat) ? includeVat : 
   Number.parseFloat(includeVat.toFixed(2)); 
@@ -38,9 +45,19 @@ function addVAT(originalPrice, vatRate) {
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
+
+  //Declared a variable containing the Sale price
   
   let discountedPrice = originalPrice * (1 - reduction / 100);
 
+   /*Built the solution with ternary operator.
+
+    Line #1: Checking if there is any reduction if none applied simply return the orginal price
+    Line #2: Checking if the sale price is decimal with 2digits after the floating point
+    if yes simply returning it
+    Line #3: If NO return to second digit after floating point
+
+  */
   return reduction <= 0 ? originalPrice :
   discountedPrice.toString().length < 5 ? discountedPrice : 
   Number.parseFloat(discountedPrice.toFixed(2));
