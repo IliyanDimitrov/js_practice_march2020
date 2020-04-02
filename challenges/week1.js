@@ -1,3 +1,15 @@
+//============================
+
+function formatNumber(number) {
+
+  return Number.isInteger(number) ? 
+  number : 
+  Number.parseFloat(number.toFixed(2)); 
+
+}
+
+//============================
+
 function capitalize(word) {
   if (word === undefined) throw new Error("word is required");
 
@@ -60,7 +72,9 @@ function getSalePrice(originalPrice, reduction) {
   */
   return reduction <= 0 ? originalPrice :
   discountedPrice.toString().length < 5 ? discountedPrice : 
-  Number.parseFloat(discountedPrice.toFixed(2));
+  formatNumber(discountedPrice); 
+  
+  // refactored the code a little bit "formatNumber" on top ^
 }
 
 function getMiddleCharacter(str) {
@@ -96,17 +110,50 @@ function reverseAllWords(words) {
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // Add your code here!
+  
+  //created counter
+
+  let linuxUsersCounter = 0;
+
+  for(let os of users) {
+
+    //for every os match we add one to the count
+
+    if(os.type === "Linux") {
+      linuxUsersCounter++;
+    }
+  }
+
+  //return the total count
+
+  return linuxUsersCounter;
+
 }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  // Add your code here!
-}
+
+  let totalScore = 0;
+
+  scores.forEach(score => totalScore += score);
+  
+  return formatNumber(totalScore / scores.length); //Used my function for rounding
+
+} 
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  // Add your code here!
+
+  if (n % 3 != 0 && n % 5 != 0) {
+    return n;
+  } else if (n % 3 == 0 && n % 5 == 0) { 
+    return "fizzbuzz";
+  } else if (n % 5 == 0) {
+    return "buzz";
+  } else if (n % 3 == 0) {
+    return "fizz";
+  }
+
 }
 
 module.exports = {
