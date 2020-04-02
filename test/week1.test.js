@@ -75,7 +75,7 @@ describe("getMiddleCharacter", () => {
   });
 });
 
-describe.only("reverseWord", () => {
+describe("reverseWord", () => {
   test("returns the provided word, reversed", () => {
     expect(reverseWord("foo")).toBe("oof");
   });
@@ -99,7 +99,7 @@ describe("reverseAllWords", () => {
   });
 });
 
-describe("countLinuxUsers", () => {
+describe.only("countLinuxUsers", () => {
   test("returns 0 if no Linux users found", () => {
     const users = [
       { name: "Heather", OS: "Windows 8", type: "Windows" },
