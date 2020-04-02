@@ -1,10 +1,10 @@
 //============================
 
+//Created the funtion to refactor my code as I had to use the same logic few times now
+
 function formatNumber(number) {
 
-  return Number.isInteger(number) ? 
-  number : 
-  Number.parseFloat(number.toFixed(2)); 
+  return Number.isInteger(number) ? number : Number.parseFloat(number.toFixed(2)); 
 
 }
 
@@ -41,17 +41,8 @@ function addVAT(originalPrice, vatRate) {
 
   let includeVat = (originalPrice * vatRate) / 100 + originalPrice;
 
-  /*Built the solution with ternary operator.
-
-    Line #1: Checking if there is vat rate if none applied simply return the orginal price
-    Line #2: Checking if the price with the vat included is whole number if yes, simply returning it
-    Line #3: If decimal return to second digit after floating point
-
-  */
-  return vatRate <= 0 ? originalPrice : 
-  Number.isInteger(includeVat) ? includeVat : 
-  Number.parseFloat(includeVat.toFixed(2)); 
-
+  //Refactored the code(created formatNumber func ^top)
+  return vatRate <= 0 ? originalPrice : formatNumber(includeVat); 
 }
 
 function getSalePrice(originalPrice, reduction) {
@@ -62,19 +53,9 @@ function getSalePrice(originalPrice, reduction) {
   
   let discountedPrice = originalPrice * (1 - reduction / 100);
 
-   /*Built the solution with ternary operator.
+  //Refactored the code(created formatNumber func ^top)
 
-    Line #1: Checking if there is any reduction if none applied simply return the orginal price
-    Line #2: Checking if the sale price is decimal with 2digits after the floating point
-    if yes simply returning it
-    Line #3: If NO return to second digit after floating point
-
-  */
-  return reduction <= 0 ? originalPrice :
-  discountedPrice.toString().length < 5 ? discountedPrice : 
-  formatNumber(discountedPrice); 
-  
-  // refactored the code a little bit "formatNumber" on top ^
+  return reduction <= 0 ? originalPrice : formatNumber(discountedPrice); 
 }
 
 function getMiddleCharacter(str) {
@@ -82,10 +63,11 @@ function getMiddleCharacter(str) {
 
   return str.length % 2 == 0 ? 
 
-  str.substring(str.length / 2 - 1, str.length / 2 + 1) :  //If length is even num
+  //If length is even num
+  str.substring(str.length / 2 - 1, str.length / 2 + 1) :  
 
-  str[Math.ceil(str.length / 2 - 1)]; //If length is odd num
-
+  //If length is odd num
+  str[Math.ceil(str.length / 2 - 1)];
 }
 
 function reverseWord(word) {
@@ -94,7 +76,6 @@ function reverseWord(word) {
   //Used split to make the string an array, reverced it, joined back reversed
 
   return word.split('').reverse().join(''); 
-
 }
 
 function reverseAllWords(words) {
@@ -105,7 +86,6 @@ function reverseAllWords(words) {
   const reversedArray = words.map(word => word.split('').reverse().join(''));
 
   return reversedArray;
-
 }
 
 function countLinuxUsers(users) {
@@ -127,7 +107,6 @@ function countLinuxUsers(users) {
   //return the total count
 
   return linuxUsersCounter;
-
 }
 
 function getMeanScore(scores) {
@@ -136,9 +115,10 @@ function getMeanScore(scores) {
   let totalScore = 0;
 
   scores.forEach(score => totalScore += score);
-  
-  return formatNumber(totalScore / scores.length); //Used my function for rounding
 
+  //Used my function for rounding
+
+  return formatNumber(totalScore / scores.length); 
 } 
 
 function simpleFizzBuzz(n) {
@@ -153,7 +133,6 @@ function simpleFizzBuzz(n) {
   } else if (n % 3 == 0) {
     return "fizz";
   }
-
 }
 
 module.exports = {
