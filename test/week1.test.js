@@ -29,7 +29,7 @@ describe("generateInitials", () => {
   });
 });
 
-describe.only("addVAT", () => {
+describe("addVAT", () => {
   test("adds a VAT of 20% to a price of 100", () => {
     expect(addVAT(100, 20)).toBe(120);
   });
@@ -47,7 +47,7 @@ describe.only("addVAT", () => {
   });
 });
 
-describe("getSalePrice", () => {
+describe.only("getSalePrice", () => {
   test("reduces a price of 100 by 50%", () => {
     expect(getSalePrice(100, 50)).toBe(50);
   });
