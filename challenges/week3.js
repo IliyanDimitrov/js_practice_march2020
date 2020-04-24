@@ -6,10 +6,8 @@ function getSquares(nums) {
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
 
-  const camels = words.map((el, i) => i != 0 ? el.replace(el[0], el[0].toUpperCase()) : el).join('');
-  
-  return camels;
-  
+  return words.map((el, i) => i != 0 ? el.replace(el[0], el[0].toUpperCase()) : el).join('');
+    
 }
 
 function getTotalSubjects(people) {
