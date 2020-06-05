@@ -16,13 +16,17 @@ describe("sumMultiples", () => {
 });
 
 describe("isValidDNA", () => {
-    test("Return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.", () => {
+    test("Verify if this is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.", () => {
         expect(isValidDNA("GTACCATG")).toBe(true);
+    });
+    test("Verify if this is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.", () => {
         expect(isValidDNA("GTAVI")).toBe(false);
+    });   
+    test("Verify if this is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.", () => {
         expect(isValidDNA("ACGT")).toBe(true);
+    });
+    test("Verify if this is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.", () => {
         expect(isValidDNA("ASDGTACVISD")).toBe(false);
-
-
     });
 });
 
@@ -37,12 +41,14 @@ describe("isItPrime", () => {
         expect(isItPrime(7)).toBe(true);
         expect(isItPrime(5)).toBe(true);
         expect(isItPrime(4)).toBe(false);
+        expect(isItPrime(1)).toBe(false);
+
     });
 });
 
 describe("createMatrix", () => {
     test("Return an array of n arrays, each filled with n items. The parameter 'fill' should be used as the filler of the arrays.", () => {
-        expect(createMatrix(3, "foo")).toBe([
+        expect(createMatrix(3, "foo")).toStrictEqual([
             ["foo", "foo", "foo"],
             ["foo", "foo", "foo"],
             ["foo", "foo", "foo"]
